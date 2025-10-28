@@ -1,0 +1,15 @@
+{
+  "name": "starcoin-website",
+  "version": "1.0.0",
+  "description": "StarCoin Team Official Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s . -l 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "keywords": ["crypto", "telegram", "bot", "starcoin"],
+  "author": "StarCoin Team",
+  "license": "MIT"
+}

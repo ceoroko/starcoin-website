@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: starcoin-website
+    env: static
+    buildCommand: ""
+    startCommand: "npx serve -s . -l $PORT"
+    envVars:
+      - key: NODE_VERSION
+        value: "18.0.0"

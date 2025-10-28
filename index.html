@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>StarCoin Team</title>
+</head>
+<body>
+     <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🪙</span>
+                <span class="logo-text">StarCoin Team</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#bot">StarCoin Bot</a></li>
+                <li><a href="#promocodes">Промокоды</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title gradient-text">StarCoin Team</h1>
+            <p class="hero-subtitle">Инновационные решения в мире криптовалют и цифровых активов</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Наши проекты</a>
+                <a href="#bot" class="btn btn-secondary">StarCoin Bot</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card">⭐</div>
+            <div class="floating-card">💰</div>
+            <div class="floating-card">💵</div>
+        </div>
+    </section>
+
+    <!-- О команде -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>О команде StarCoin</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🎯 Наша миссия</h3>
+                    <p>Делаем криптовалюты доступными для каждого через простые и безопасные решения</p>
+                </div>
+                <div class="about-card">
+                    <h3>🚀 Наши ценности</h3>
+                    <p>Прозрачность, безопасность и инновации в каждом проекте</p>
+                </div>
+                <div class="about-card">
+                    <h3>📅 Наша история</h3>
+                    <p>Команда StarCoin появилась 23.10.2025 и с самого начала ориентирована на создание удобных и надежных криптовалютных решений для пользователей со всего мира</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Наши проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🤖</div>
+                    <h3>StarCoin Bot</h3>
+                    <p>Telegram бот для безопасной покупки криптовалюты</p>
+                    <span class="project-status">🚀 Активно развивается</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🔗</div>
+                    <h3>StarTag</h3>
+                    <p>Telegram бот с арендой разных NFT тегов!</p>
+                    <span class="project-status">🛠 В разработке</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">📱</div>
+                    <h3>???</h3>
+                    <p>Предложить проект можно связавшись с нами!</p>
+                    <span class="project-status">Пусто...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- StarCoin Bot секция -->
+<section id="bot" class="bot-section">
+    <div class="container">
+        <div class="bot-content centered">
+            <div class="bot-info">
+                <h2>StarCoin Bot</h2>
+                <p class="bot-description">Наш флагманский продукт - Telegram бот для мгновенной покупки криптовалюты</p>
+                
+                <div class="bot-features">
+                    <div class="feature">
+                        <span class="feature-icon">⚡</span>
+                        <span>Быстрые операции</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Максимальная безопасность</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💎</span>
+                        <span>Поддержка 3 активов</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔄</span>
+                        <span>Двусторонняя конвертация</span>
+                    </div>
+                </div>
+
+                <!-- Обновленный калькулятор -->
+                <div class="calculator">
+                    <h3>Калькулятор цен</h3>
+                    
+                    <!-- Переключатель режимов -->
+                    <div class="calc-mode-toggle">
+                        <button class="mode-btn active" data-mode="to-rub">Актив → Рубли</button>
+                        <button class="mode-btn" data-mode="to-asset">Рубли → Актив</button>
+                    </div>
+
+                    <div class="calc-form">
+                        <select id="asset" class="calc-input">
+                            <option value="Stars">⭐️ Telegram Stars</option>
+                            <option value="TON">💰 TON</option>
+                            <option value="USDT">💵 USDT</option>
+                        </select>
+                        <input type="number" id="amount" class="calc-input" placeholder="Количество актива" min="0" step="0.01">
+                        <button onclick="calculatePrice()" class="calc-button">Рассчитать</button>
+                    </div>
+                    <div id="calc-result" class="calc-result">Выберите режим и введите данные</div>
+                </div>
+
+                <div class="bot-actions">
+                    <a href="https://t.me/crypostarsbot" class="btn btn-primary" target="_blank">
+                        📲 Открыть в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Промокоды -->
+    <section id="promocodes" class="promocodes">
+        <div class="container">
+            <h2>Промокоды</h2>
+            <div class="promocodes-grid">
+                <div class="promocode-card">
+                    <div class="promocode-header">
+                        <span class="promocode-badge">АКТИВЕН</span>
+                        <span class="promocode-discount">-2%</span>
+                    </div>
+                    <div class="promocode-code">StarCoin</div>
+                    <p class="promocode-description">Скидка 2% на все покупки</p>
+                    <div class="promocode-conditions">
+                        <span>✅ Действует для всех пользователей</span>
+                        <span>✅ От 100 stars / 2 TON / 6 USDT</span>
+                        <span>⏰ Актиаций: 10</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyPromocode('STARCOIN')">📋 Скопировать</button>
+                </div>
+                <div class="promocode-card">
+                    <div class="promocode-header">
+                        <span class="promocode-badge">АКТИВЕН</span>
+                        <span class="promocode-discount">-1%</span>
+                    </div>
+                    <div class="promocode-code">Star</div>
+                    <p class="promocode-description">Скидка 1% на первую покупку звезд</p>
+                    <div class="promocode-conditions">
+                        <span>✅ Действует для всех пользователей</span>
+                        <span>✅ Минимальная покупка: 100 Stars</span>
+                        <span>⏰ Актваций: 100</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyPromocode('STAR')">📋 Скопировать</button>
+                </div>
+                <div class="promocode-card">
+                    <div class="promocode-header">
+                        <span class="promocode-badge">АКТИВЕН</span>
+                        <span class="promocode-discount">-5%</span>
+                    </div>
+                    <div class="promocode-code">Coin</div>
+                    <p class="promocode-description">Скидка 5% на первую покупку криптовалюты</p>
+                    <div class="promocode-conditions">
+                        <span>✅ Действует для новых пользователей</span>
+                        <span>✅ Минимальная покупка: 2 TON / 6 USDT</span>
+                        <span>⏰ Активаций: 100</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyPromocode('COIN')">📋 Скопировать</button>
+                </div>
+                <div class="promocode-card">
+                    <div class="promocode-header">
+                        <span class="promocode-badge">ComigSoon</span>
+                        <span class="promocode-discount">?%</span>
+                    </div>
+                    <div class="promocode-code">?</div>
+                    <p class="promocode-description">Промокоды будут повляться в нашем канале</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- Контакты -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Мы всегда на связи!</h3>
+                <p>Задавайте вопросы, предлагайте идеи или просто общайтесь с нами. Наша команда готова помочь вам 24/7</p>
+                
+                <div class="social-links">
+                    <a href="https://t.me/newsstarcoin" class="social-link" target="_blank">
+                        <span>📢</span>
+                        <span>Новостной канал</span>
+                    </a>
+                    <a href="https://t.me/supportstarcoin" class="social-link" target="_blank">
+                        <span>💬</span>
+                        <span>Техподдержка</span>
+                    </a>
+                    <a href="https://t.me/+au9djE9HaWg5NmZi" class="social-link" target="_blank">
+                        <span>👥</span>
+                        <span>Сообщество</span>
+                    </a>
+                </div>
+                
+                <div class="contact-stats">
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Поддержка</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5 мин</span>
+                        <span class="stat-label">Среднее время ответа</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Готовы помочь</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 StarCoin Team. Основано 23.10.2025</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
