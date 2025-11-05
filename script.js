@@ -148,79 +148,73 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Наблюдаем за карточками
-document.querySelectorAll('.about-card, .project-card, .promocode-card').forEach(card => {
+document.querySelectorAll('.about-card, .project-card, .promocode-card, .feature-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
 });
 
-// Функция для копирования промокода
-function copyPromocode(code) {
-    navigator.clipboard.writeText(code).then(() => {
-        // Показываем уведомление об успешном копировании
-        showNotification(`Промокод "${code}" скопирован!`);
-    }).catch(err => {
-        console.error('Ошибка копирования: ', err);
-        // Fallback для старых браузеров
-        const textArea = document.createElement('textarea');
-        textArea.value = code;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showNotification(`Промокод "${code}" скопирован!`);
+// Функционал бургер-меню
+function initMobileMenu() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    // Проверяем, существуют ли элементы
+    if (!navToggle || !navMenu) {
+        console.error('Элементы бургер-меню не найдены!');
+        return;
+    }
+    
+    const body = document.body;
+    
+    // Создаем оверлей
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+    
+    function toggleMenu() {
+        const isActive = navMenu.classList.contains('active');
+        
+        if (isActive) {
+            // Закрываем меню
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = ''; // Разблокируем скролл
+        } else {
+            // Открываем меню
+            navMenu.classList.add('active');
+            navToggle.classList.add('active');
+            overlay.classList.add('active');
+            body.style.overflow = 'hidden'; // Блокируем скролл
+        }
+    }
+    
+    // Обработчики событий
+    navToggle.addEventListener('click', toggleMenu);
+    
+    // Закрытие меню при клике на оверлей или ссылку
+    overlay.addEventListener('click', toggleMenu);
+    
+    // Закрытие меню при клике на ссылку
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
-}
-
-// Функция показа уведомления
-function showNotification(message) {
-    // Создаем элемент уведомления
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: #10b981;
-        color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        z-index: 10000;
-        font-weight: 600;
-        animation: slideIn 0.3s ease;
-    `;
     
-    // Добавляем стили для анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+    // Закрытие меню при изменении размера окна (на десктоп)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            toggleMenu();
         }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
+    });
     
-    document.body.appendChild(notification);
-    
-    // Удаляем уведомление через 3 секунды
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                document.body.removeChild(notification);
-            }
-            if (style.parentNode) {
-                document.head.removeChild(style);
-            }
-        }, 300);
-    }, 3000);
+    console.log('Бургер-меню инициализировано!');
 }
 
 // Инициализация при загрузке страницы
@@ -244,9 +238,11 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', calculatePrice);
     });
     
+    // Инициализация бургер-меню
+    initMobileMenu();
+    
     console.log('StarCoin Team website initialized successfully! 🚀');
 });
 
 // Добавляем глобальную функцию для расчета (на случай использования из HTML)
 window.calculatePrice = calculatePrice;
-window.copyPromocode = copyPromocode;

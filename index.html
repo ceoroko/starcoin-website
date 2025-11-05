@@ -7,34 +7,43 @@
     <title>StarCoin Team</title>
 </head>
 <body>
-     <!-- Навигация -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-icon">🪙</span>
-                <span class="logo-text">StarCoin Team</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#bot">StarCoin Bot</a></li>
-                <li><a href="#promocodes">Промокоды</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle">
-                <span class="theme-icon">🌙</span>
-            </button>
+<!-- Навигация -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <span class="logo-icon">🪙</span>
+            <span class="logo-text">StarCoin Team</span>
         </div>
-    </nav>
+        
+        <!-- Бургер-кнопка -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Открыть меню">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
 
-    <!-- Герой секция -->
-    <section class="hero">
-        <div class="hero-content">
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#startag">StarTag Bot</a></li>
+            <li><a href="#bot">StarCoin Bot</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+        
+        <button id="theme-toggle" class="theme-toggle">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Герой секция -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
             <h1 class="hero-title gradient-text">StarCoin Team</h1>
             <p class="hero-subtitle">Инновационные решения в мире криптовалют и цифровых активов</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">Наши проекты</a>
-                <a href="#bot" class="btn btn-secondary">StarCoin Bot</a>
             </div>
         </div>
         <div class="hero-visual">
@@ -42,7 +51,8 @@
             <div class="floating-card">💰</div>
             <div class="floating-card">💵</div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- О команде -->
     <section id="about" class="about">
@@ -77,11 +87,11 @@
                     <span class="project-status">🚀 Активно развивается</span>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🔗</div>
-                    <h3>StarTag</h3>
-                    <p>Telegram бот с арендой разных NFT тегов!</p>
-                    <span class="project-status">🛠 В разработке</span>
-                </div>
+                    <div class="project-icon">🏷️</div>
+                    <h3>StarCoin NFT</h3>
+                    <p>Telegram бот для аренды и покупки эксклюзивных NFT тегов</p>
+                <span class="project-status">🚀 Активно развивается</span>
+            </div>
                 <div class="project-card">
                     <div class="project-icon">📱</div>
                     <h3>???</h3>
@@ -91,6 +101,76 @@
             </div>
         </div>
     </section>
+
+<!-- StarTag Bot секция -->
+<section id="startag" class="bot-section startag-bot">
+    <div class="container">
+        <div class="bot-content centered">
+            <div class="bot-info">
+                <h2>StarTag Bot</h2>
+                <p class="bot-description">Telegram бот для аренды и покупки эксклюзивных NFT тегов в Telegram</p>
+                
+                <div class="bot-features">
+                    <div class="feature">
+                        <span class="feature-icon">🏷️</span>
+                        <span>Покупка NFT тегов</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">⏰</span>
+                        <span>Аренда тегов на любой срок</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Безопасные сделки</span>
+                    </div>
+                </div>
+
+                <div class="tag-examples">
+                    <h4>Доступные теги:</h4>
+                    <div class="tags-list">
+                        <span class="tag-example">@jutfo</span>
+                        <span class="tag-example">@weaeb</span>
+                        <span class="tag-example">@bumefo</span>
+                        <span class="tag-example">NFT подарки</span>
+                    </div>
+                </div>
+
+                <div class="bot-actions">
+                    <a href="https://t.me/starcoinnftbot" class="btn btn-primary" target="_blank">
+                        🏷️ Открыть бота
+                    </a>
+                    <a href="#tag-features" class="btn btn-secondary">
+                        📋 Узнать больше
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Детали бота -->
+<section id="tag-features" class="features">
+    <div class="container">
+        <h2>Возможности StarTag Bot</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3>Покупка тегов</h3>
+                <p>Приобретайте эксклюзивные NFT теги в полную собственность</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Аренда</h3>
+                <p>Арендуйте теги на срок от 1 до 30 дней по выгодным ценам</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Каталог</h3>
+                <p>Удобный каталог с актуальными ценами и статусами тегов</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- StarCoin Bot секция -->
 <section id="bot" class="bot-section">
@@ -151,64 +231,6 @@
     </div>
 </section>
 
-    <!-- Промокоды -->
-    <section id="promocodes" class="promocodes">
-        <div class="container">
-            <h2>Промокоды</h2>
-            <div class="promocodes-grid">
-                <div class="promocode-card">
-                    <div class="promocode-header">
-                        <span class="promocode-badge">АКТИВЕН</span>
-                        <span class="promocode-discount">-2%</span>
-                    </div>
-                    <div class="promocode-code">StarCoin</div>
-                    <p class="promocode-description">Скидка 2% на все покупки</p>
-                    <div class="promocode-conditions">
-                        <span>✅ Действует для всех пользователей</span>
-                        <span>✅ От 100 stars / 2 TON / 6 USDT</span>
-                        <span>⏰ Актиаций: 10</span>
-                    </div>
-                    <button class="btn-copy" onclick="copyPromocode('STARCOIN')">📋 Скопировать</button>
-                </div>
-                <div class="promocode-card">
-                    <div class="promocode-header">
-                        <span class="promocode-badge">АКТИВЕН</span>
-                        <span class="promocode-discount">-1%</span>
-                    </div>
-                    <div class="promocode-code">Star</div>
-                    <p class="promocode-description">Скидка 1% на первую покупку звезд</p>
-                    <div class="promocode-conditions">
-                        <span>✅ Действует для всех пользователей</span>
-                        <span>✅ Минимальная покупка: 100 Stars</span>
-                        <span>⏰ Актваций: 100</span>
-                    </div>
-                    <button class="btn-copy" onclick="copyPromocode('STAR')">📋 Скопировать</button>
-                </div>
-                <div class="promocode-card">
-                    <div class="promocode-header">
-                        <span class="promocode-badge">АКТИВЕН</span>
-                        <span class="promocode-discount">-5%</span>
-                    </div>
-                    <div class="promocode-code">Coin</div>
-                    <p class="promocode-description">Скидка 5% на первую покупку криптовалюты</p>
-                    <div class="promocode-conditions">
-                        <span>✅ Действует для новых пользователей</span>
-                        <span>✅ Минимальная покупка: 2 TON / 6 USDT</span>
-                        <span>⏰ Активаций: 100</span>
-                    </div>
-                    <button class="btn-copy" onclick="copyPromocode('COIN')">📋 Скопировать</button>
-                </div>
-                <div class="promocode-card">
-                    <div class="promocode-header">
-                        <span class="promocode-badge">ComigSoon</span>
-                        <span class="promocode-discount">?%</span>
-                    </div>
-                    <div class="promocode-code">?</div>
-                    <p class="promocode-description">Промокоды будут повляться в нашем канале</p>
-            </div>
-        </div>
-    </section>
-
    <!-- Контакты -->
 <section id="contact" class="contact">
     <div class="container">
@@ -218,12 +240,23 @@
                 <h3>Мы всегда на связи!</h3>
                 <p>Задавайте вопросы, предлагайте идеи или просто общайтесь с нами. Наша команда готова помочь вам 24/7</p>
                 
+                <div class="promocode-info">
+                    <h4>🎁 Промокоды и акции</h4>
+                    <p>Все актуальные промокоды и специальные предложения публикуются в наших каналах:</p>
+                    <div class="social-links">
+                        <a href="https://t.me/ceoroco" class="social-link" target="_blank">
+                            <span>📢</span>
+                            <span>Канал нашего кодера</span>
+                        </a>
+                        <a href="https://t.me/newsstarcoin" class="social-link" target="_blank">
+                            <span>📢</span>
+                            <span>Новостной канал</span>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="social-links">
-                    <a href="https://t.me/newsstarcoin" class="social-link" target="_blank">
-                        <span>📢</span>
-                        <span>Новостной канал</span>
-                    </a>
-                    <a href="https://t.me/supportstarcoin" class="social-link" target="_blank">
+                    <a href="https://t.me/starcoinsupport" class="social-link" target="_blank">
                         <span>💬</span>
                         <span>Техподдержка</span>
                     </a>

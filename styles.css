@@ -1,5 +1,4 @@
 /* styles.css */
-/* styles.css */
 :root {
     /* Основные цвета */
     --primary: #6366f1;
@@ -96,6 +95,40 @@ body {
     color: var(--primary);
 }
 
+/* Стили для бургер-меню */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    gap: 4px;
+    z-index: 1001;
+}
+
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Анимация бургера при активации */
+.nav-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
 /* УЛУЧШЕННЫЙ ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ */
 .theme-toggle {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -128,12 +161,10 @@ body {
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
 }
 
-/* Анимация иконки при переключении */
 .theme-toggle:hover .theme-icon {
     transform: rotate(15deg);
 }
 
-/* Индикатор состояния темы */
 .theme-toggle::before {
     content: '';
     position: absolute;
@@ -152,20 +183,7 @@ body {
     opacity: 1;
 }
 
-/* Улучшенная версия для мобильных */
-@media (max-width: 768px) {
-    .theme-toggle {
-        width: 55px;
-        height: 30px;
-        margin-left: 0.8rem;
-    }
-    
-    .theme-icon {
-        font-size: 1rem;
-    }
-}
-
-/* Герой секция - ОПТИМИЗИРОВАНА ДЛЯ МОБИЛЬНЫХ */
+/* Герой секция */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -180,10 +198,11 @@ body {
 .hero-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     align-items: center;
+    text-align: center;
 }
 
 /* Анимированный градиент текста */
@@ -197,6 +216,7 @@ body {
     background-clip: text;
     color: transparent;
     animation: gradient-shift 8s ease infinite;
+    line-height: 1.1;
 }
 
 @keyframes gradient-shift {
@@ -209,12 +229,16 @@ body {
     margin-bottom: 2rem;
     opacity: 0.9;
     line-height: 1.5;
+    max-width: 600px;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
 }
 
 .btn {
@@ -227,7 +251,7 @@ body {
     display: inline-block;
     text-align: center;
     flex: 1;
-    min-width: 140px;
+    min-width: 160px;
 }
 
 .btn-primary {
@@ -257,6 +281,7 @@ body {
     align-items: center;
     gap: 2rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .floating-card {
@@ -269,6 +294,9 @@ body {
     justify-content: center;
     font-size: 2rem;
     animation: float 3s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .floating-card:nth-child(2) {
@@ -282,6 +310,36 @@ body {
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
+}
+
+.floating-card:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+/* Плавное появление элементов */
+.hero-content > * {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-text {
+    animation-delay: 0.2s;
+}
+
+.hero-visual {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Секции */
@@ -446,8 +504,113 @@ h2 {
     text-align: center;
 }
 
+/* Стили для переключателя режимов калькулятора */
+.calc-mode-toggle {
+    display: flex;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 1.5rem;
+    gap: 5px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.mode-btn.active {
+    background: var(--secondary);
+    color: #1f2937;
+}
+
+.mode-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.1);
+}
+
+/* StarTag Bot секция */
+.startag-bot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.tag-examples {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.tag-examples h4 {
+    margin-bottom: 1rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.tags-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag-example {
+    background: rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Секция возможностей */
+.features {
+    padding: 80px 0;
+    background: var(--bg-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 /* Контакты */
-/* Обновленные стили для контактов */
 .contact {
     text-align: center;
 }
@@ -464,320 +627,6 @@ h2 {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-    min-width: 200px;
-    justify-content: center;
-}
-
-.social-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px var(--shadow);
-    border-color: var(--primary);
-}
-
-/* Футер */
-.footer {
-    background: #1f2937;
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-    /* Герой секция - КОЛОНКА */
-    .hero {
-        padding: 80px 20px 40px;
-        min-height: auto;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
-    
-    .btn {
-        width: 100%;
-        padding: 14px 20px;
-    }
-    
-    .hero-visual {
-        gap: 1rem;
-        order: -1; /* Видео/картинки сверху */
-    }
-    
-    .floating-card {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-    
-    /* Навигация */
-    .nav-menu {
-        display: none;
-    }
-    
-    .nav-logo {
-        font-size: 1.2rem;
-    }
-    
-    .theme-toggle {
-        width: 40px;
-        height: 40px;
-        margin-left: 0.5rem;
-    }
-    
-    .theme-icon {
-        font-size: 1rem;
-    }
-    
-    /* Общие секции */
-    section {
-        padding: 60px 0;
-    }
-    
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* Секция бота и контакты */
-    .bot-content,
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .bot-content {
-        text-align: center;
-    }
-    
-    /* Карточки */
-    .about-grid,
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .about-card,
-    .project-card {
-        padding: 1.5rem;
-    }
-    
-    /* Калькулятор */
-    .calculator {
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-    }
-}
-
-/* Дополнительные улучшения для очень маленьких экранов */
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    
-    .floating-card {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-    
-    .nav-container {
-        padding: 0.8rem 15px;
-    }
-}
-.bot-content.centered {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.bot-content.centered .bot-info {
-    max-width: 600px;
-    width: 100%;
-}
-
-.bot-content.centered .bot-features {
-    justify-content: center;
-}
-
-.bot-content.centered .feature {
-    justify-content: center;
-}
-
-.bot-content.centered .calculator {
-    margin: 2rem auto;
-}
-
-/* Секция промокодов */
-.promocodes {
-    background: var(--bg-primary);
-    padding: 80px 0;
-}
-
-.promocodes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.promocode-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px var(--shadow);
-    border: 1px solid var(--border-color);
-    text-align: center;
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.promocode-card:hover {
-    transform: translateY(-5px);
-}
-
-.promocode-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.promocode-badge {
-    background: #10b981;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.promocode-badge[data-status="soon"] {
-    background: #f59e0b;
-}
-
-.promocode-discount {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.promocode-code {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 1rem 0;
-    letter-spacing: 2px;
-    border: 2px dashed var(--border-color);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.promocode-description {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-}
-
-.promocode-conditions {
-    text-align: left;
-    margin-bottom: 1.5rem;
-}
-
-.promocode-conditions span {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.btn-copy {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-copy:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-/* Адаптивность для промокодов */
-@media (max-width: 768px) {
-    .promocodes-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .promocode-card {
-        padding: 1.5rem;
-    }
-    
-    .promocode-code {
-        font-size: 1.5rem;
-    }
-}
-/* Увеличенные отступы для контактов */
-.contact-info {
     padding: 3rem 2rem;
     background: var(--card-bg);
     border-radius: 20px;
@@ -800,7 +649,32 @@ h2 {
 }
 
 .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin: 2.5rem 0;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    min-width: 200px;
+    justify-content: center;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow);
+    border-color: var(--primary);
 }
 
 .contact-stats {
@@ -833,8 +707,231 @@ h2 {
     font-weight: 500;
 }
 
-/* Дополнительные отступы для мобильных */
+.promocode-info {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.promocode-info h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.promocode-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.bot-content.centered {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.bot-content.centered .bot-info {
+    max-width: 600px;
+    width: 100%;
+}
+
+.bot-content.centered .bot-features {
+    justify-content: center;
+}
+
+.bot-content.centered .feature {
+    justify-content: center;
+}
+
+.bot-content.centered .calculator {
+    margin: 2rem auto;
+}
+
+/* Футер */
+.footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
 @media (max-width: 768px) {
+    /* Навигация и бургер-меню */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--card-bg);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        border-left: 1px solid var(--border-color);
+        box-shadow: -5px 0 30px var(--shadow);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    /* Задержка появления пунктов меню */
+    .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+    .nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
+    
+    /* Оверлей при открытом меню */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .theme-toggle {
+        z-index: 1001;
+        position: relative;
+        width: 55px;
+        height: 30px;
+        margin-left: 0.8rem;
+    }
+    
+    .theme-icon {
+        font-size: 1rem;
+    }
+    
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+
+    /* Герой секция */
+    .hero {
+        padding: 80px 20px 40px;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        gap: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+    
+    .hero-visual {
+        gap: 1rem;
+    }
+    
+    .floating-card {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Общие секции */
+    section {
+        padding: 60px 0;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Секция бота и контакты */
+    .bot-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .bot-content {
+        text-align: center;
+    }
+    
+    /* Карточки */
+    .about-grid,
+    .projects-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-card,
+    .project-card,
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    /* Калькулятор */
+    .calculator {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .mode-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .calc-mode-toggle {
+        margin-bottom: 1rem;
+    }
+
+    /* Контакты */
     .contact-info {
         padding: 2.5rem 1.5rem;
         margin: 1.5rem 0;
@@ -869,10 +966,46 @@ h2 {
     .stat-number {
         font-size: 2rem;
     }
+
+    /* Теги */
+    .tags-list {
+        gap: 0.5rem;
+    }
+    
+    .tag-example {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
 }
 
-/* Для очень маленьких экранов */
+/* Дополнительные улучшения для очень маленьких экранов */
 @media (max-width: 480px) {
+    .nav-menu {
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .floating-card {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0.8rem 15px;
+    }
+    
     .contact-info {
         padding: 2rem 1rem;
     }
@@ -887,47 +1020,3 @@ h2 {
         min-width: 180px;
     }
 }
-/* Стили для переключателя режимов калькулятора */
-.calc-mode-toggle {
-    display: flex;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 1.5rem;
-    gap: 5px;
-}
-
-.mode-btn {
-    flex: 1;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    background: transparent;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.mode-btn.active {
-    background: var(--secondary);
-    color: #1f2937;
-}
-
-.mode-btn:hover:not(.active) {
-    background: rgba(255,255,255,0.1);
-}
-
-/* Адаптивность для переключателя */
-@media (max-width: 768px) {
-    .mode-btn {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
-    
-    .calc-mode-toggle {
-        margin-bottom: 1rem;
-    }
-}
-
